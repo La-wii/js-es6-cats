@@ -24,7 +24,30 @@ gattini.forEach((element) => {
         <br>
             Colore: ${element.colore}
         </li>
+        <hr>
     <ul>
     `    
 }
 );
+
+// Milestone 2 
+// Dividere i gatti in due contenitori distinti in base al sesso e aggiungere a fianco di ogni gattino un fiocco colorato di rosa, se femmina, o di blu, se maschio. 
+
+let maschi= [];
+let femmine = [];
+
+for (let i = 0; i < gattini.length; i++){
+    if(gattini[i].sesso == 'Maschio'){
+        maschi.push(gattini[i]);
+        // console.log(maschi);
+    } else {
+        femmine.push(gattini[i]);
+        // console.log(femmine);
+    }
+}
+console.log(maschi);
+console.log(femmine);
+
+
+
+// Il colore del fiocco deve essere più tenue se il gatto è più giovane, più scuro se il gatto è più vecchio.
