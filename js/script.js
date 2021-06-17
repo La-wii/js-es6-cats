@@ -1,7 +1,7 @@
 // Milestone 1 
 
 // Definire un array di oggetti; ogni oggetto rappresenta un gatto, che è caratterizzato da: nome, età, colore e sesso.
-
+document.getElementById("uno").innerHTML = 'Milestone 1';
 const gattini = [
     {nome: 'Enrico', eta: 8, colore: '#000000', sesso: 'Maschio'},
     {nome: 'Ciccio', eta: 12, colore: '#c8ae8c', sesso: 'Maschio'},
@@ -32,8 +32,7 @@ gattini.forEach((element) => {
 
 // Il colore del fiocco deve essere più tenue se il gatto è più giovane, più scuro se il gatto è più vecchio.
 
-let maschi = [];
-let femmine = [];
+document.getElementById("due").innerHTML = 'Milestone 2';
 
 let rosa = '#b62a71';
 let azzurro = '#011372';
@@ -55,7 +54,25 @@ const divisione = gattini.map ((element) => {
     }
 });
 
-divisione.forEach((element) => {
+// divisione.forEach((element) => {
+//     document.getElementById("fiocchi").innerHTML +=
+//     `
+//     <ul>
+//         <li>
+//             ${element.nome} : <i class="fas fa-cat" style="color:${element.colore}"></i>
+//             <i class="fas fa-ribbon" style="color:${element.fiocco.color}; opacity:${element.fiocco.opacity}"></i>
+//         </li>
+//         <hr>
+//     <ul>
+//     `; 
+// });
+
+
+const maschi = divisione.filter((element) =>{
+    return element.sesso === 'Maschio';
+});
+// console.log(maschi);
+maschi.forEach((element) => {
     document.getElementById("fiocchi").innerHTML +=
     `
     <ul>
@@ -68,7 +85,50 @@ divisione.forEach((element) => {
     `; 
 });
 
+
+const femmine = divisione.filter((element) =>{
+    return element.sesso === 'Femmina';
+});
+// console.log(femmine);
+femmine.forEach((element) => {
+    document.getElementById("fiocchi").innerHTML +=
+    `
+    <ul>
+        <li>
+            ${element.nome} : <i class="fas fa-cat" style="color:${element.colore}"></i>
+            <i class="fas fa-ribbon" style="color:${element.fiocco.color}; opacity:${element.fiocco.opacity}"></i>
+        </li>
+        <hr>
+    <ul>
+    `; 
+});
+
+
 // Milestone 3 
 // Creare un nuovo array con prima tutti i gattini femmina e poi tutti i gattini maschio, inserendo solamente nome, colore e opacità del fiocco per ogni gatto.
 
+document.getElementById("tre").innerHTML = 'Milestone 3';
 
+let femmineMaschiArray = [...femmine,...maschi];
+const gattiFemmineMaschi = femmineMaschiArray.map((element) => {
+    const{nome, colore, fiocco} = element;
+
+    return {
+        nome,
+        colore,
+        fiocco    
+    }
+});
+
+gattiFemmineMaschi.forEach((element) => {
+    document.getElementById("femmine-maschi").innerHTML +=
+    `
+    <ul>
+        <li>
+            ${element.nome} : <i class="fas fa-cat" style="color:${element.colore}"></i>
+            <i class="fas fa-ribbon" style="color:${element.fiocco.color}; opacity:${element.fiocco.opacity}"></i>
+        </li>
+        <hr>
+    <ul>
+    `;  
+});
